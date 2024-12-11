@@ -1,0 +1,33 @@
+{
+    "name": "helium/laravel-sms-verification",
+    "description": "Laravel SMS Login Verification",
+    "keywords": ["laravel", "sms", "verification", "aws" ],
+    "type": "library",
+    "license": "MIT",
+    "version": "1.2",
+    "authors": [
+        {
+            "name": "Terrence Jackson",
+            "email": "terrence@heliumservices.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "11.*",
+        "aws/aws-sdk-php": "^3.62",
+        "guzzlehttp/guzzle": "*",
+        "helium/string-helpers": "^1.0",
+        "propaganistas/laravel-phone": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Helium\\SMSVerification\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Helium\\SMSVerification\\SMSVerificationServiceProvider"
+            ]
+        }
+    }
+}
