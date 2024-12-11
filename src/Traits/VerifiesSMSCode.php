@@ -51,12 +51,11 @@ trait VerifiesSMSCode
 
         $this->sms_verification_code   = $code;
         $this->sms_verification_status = false;
-        $this->sms_verification_attempts = 0;
+        $this->sms_verification_attempts = 1;
         $this->sms_verification_expires_at = \Carbon\Carbon::now()->addMinutes($this->sms_verification_time_limit);
 
         if ($this->SMSVerificationAttemptLimitEnabled()) {
-
-            $this->sms_verification_attempts = 0;
+            $this->sms_verification_attempts = 1;
         }
 
         $this->save();
@@ -127,7 +126,7 @@ trait VerifiesSMSCode
      */
     private function SMSVerificationAttemptLimitExceeded()
     {
-        return $this->sms_verification_attempts - 1 > $this->sms_verification_attempt_limit;
+        return $this->sms_verification_attempts > $this->sms_verification_attempt_limit;
     }
 
     /**
